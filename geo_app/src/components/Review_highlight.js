@@ -1,6 +1,7 @@
 import { Component } from 'react'
 
 class Review_highlight extends Component {
+
     render() {
         return (
             <tr>

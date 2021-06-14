@@ -15,7 +15,6 @@ class Left_scroll extends Component {
                         
                     </tbody>
                 </table>
-                < Review_highlight />
             </div>
         )
     }
