@@ -17,7 +17,7 @@ export class MapContainer extends Component {
             searchText: "mcdonalds", // spaces must be replaced w "%20" - filter?
             inputType: "&inputtype=textquery",
             keyword: "&keyword=restaurant",
-            apiKey: "&key=AIzaSyDe6WRFuz0lxAuAJ1ZfiviZuQXRrtQCjc0",
+            apiKey: "&key=AIzaSyCwksum9i8ufeThaXMWHAjrzEexx8j2qJc",
             lat: "",
             lng: "",
             location: []
@@ -55,5 +55,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyDe6WRFuz0lxAuAJ1ZfiviZuQXRrtQCjc0'
+    apiKey: 'AIzaSyCwksum9i8ufeThaXMWHAjrzEexx8j2qJc'
   })(MapContainer)
