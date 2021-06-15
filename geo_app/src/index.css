@@ -1,5 +1,5 @@
 html {
-  padding: 3%;
+  padding: 1%;
 }
 
 body {
@@ -26,16 +26,23 @@ code {
   background-color: cornflowerblue;
   padding: 1%;
   margin: 1%;
+  height: 7vh;
 }
 
 .footer {
-  position: absolute;
-  bottom: 5px;
-  width: 90%;
+  bottom: 1px;
   background-color: coral;
+  opacity: 50%;
   padding: 1%;
   margin: 1%;
 }
+
+.app {
+  
+  max-height: 75vh;
+
+}
+
 
 .mainwindow {
   display: flex;
@@ -45,24 +52,29 @@ code {
   justify-content: space-around;
   align-items: stretch;
   margin: 1%;
-
-  background-color:darkgrey;
+  background-color:rgb(84, 82, 82);
+  max-height:75vh;
+  height: 75vh;
 }
 
 .leftscroll, .centermaps, .rightpanel, .newreview, .showreview, .updatereview {
-  margin: 2%;
+  margin: 1%;
   padding: 1%;
 }
 
-.leftscroll {
-  width: 25%;
+.flexitem {
+  max-height:75vh;
+  height: 75vh;
+  overflow: auto;
 
 }
 
+.leftscroll {
+  width: 20%;
+}
+
 .centermaps {
-  width: 25%;
-  border-left: 2px solid white;
-  border-right: 2px solid white;
+  width: 45%;
   margin-right: 1%;
   margin-left: 1%;
   padding-right: 3%;
@@ -72,7 +84,6 @@ code {
 
 .rightpanel {
   width: 25%;
-
 
 }
 

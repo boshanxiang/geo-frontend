@@ -19,7 +19,8 @@ class MainWindow extends Component {
     }
 
     componentDidMount() {
-        this.getReviews()
+        this.getReviews();
+        this.toggleShowReview();
     }
 
     getReviews() {
