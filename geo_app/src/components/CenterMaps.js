@@ -2,6 +2,11 @@ import { Component } from 'react'
 import {Map, GoogleApiWrapper, InfoWindow, Marker} from "google-maps-react"
 import CurrentLocation from './Map';
 
+const mapStyles = {
+    width: '35%',
+    height: '60%'
+}
+
 export class MapContainer extends Component {
     constructor(props){
         super(props)
