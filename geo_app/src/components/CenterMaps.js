@@ -37,9 +37,20 @@ export class MapContainer extends Component {
     render() {
         return (
             <div className="centermaps flexitem">
-                <CurrentLocation
+                {/* <CurrentLocation
                     centerAroundCurrentLocation
                     google={this.props.google}
+                > */}
+                <Map
+                    google={this.props.google}
+                    zoom={14}
+                    style={mapStyles}
+                    initialCenter={
+                    {
+                        lat: -1.2884,
+                        lng: 36.8233
+                    }
+                    }
                 >
                     <Marker
                         onClick={this.onMarkerClick}
@@ -52,8 +63,8 @@ export class MapContainer extends Component {
                         >
                         <h4>{this.state.selectedPlace.name}</h4>
                     </InfoWindow>
-                </CurrentLocation>
-
+                {/* </CurrentLocation> */}
+                </Map>
             </div>
         )
     }
