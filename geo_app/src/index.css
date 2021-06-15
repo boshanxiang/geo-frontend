@@ -1,3 +1,7 @@
+html {
+  padding: 3%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,7 +9,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  border: 1px solid black;
+  border: 1px solid white;
+  color: white;
 }
 
 code {
@@ -13,21 +18,23 @@ code {
     monospace;
 }
 
-.header, .footer, .mainwindow, .leftscroll, .centermaps, .rightpanel, .reviewhighlight, .newreview, .showreview, .updatereview {
-  border: 1px solid black;
-}
+/* .header, .footer, .mainwindow, .leftscroll, .centermaps, .rightpanel, .reviewhighlight, .newreview, .showreview, .updatereview {
+  border: 3px solid white;
+} */
 
 .header {
   background-color: cornflowerblue;
   padding: 1%;
+  margin: 1%;
 }
 
 .footer {
   position: absolute;
   bottom: 5px;
-  width: 100%;
+  width: 90%;
   background-color: coral;
   padding: 1%;
+  margin: 1%;
 }
 
 .mainwindow {
@@ -37,19 +44,48 @@ code {
   flex-basis: 31%;
   justify-content: space-around;
   align-items: stretch;
+  margin: 1%;
 
   background-color:darkgrey;
 }
 
+.leftscroll, .centermaps, .rightpanel, .newreview, .showreview, .updatereview {
+  margin: 2%;
+  padding: 1%;
+}
+
 .leftscroll {
+  width: 25%;
 
 }
 
 .centermaps {
+  width: 25%;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  padding: 3%;
+  margin: 2%;
 
 }
 
 .rightpanel {
+  width: 25%;
 
 
+}
+
+.mapView {
+  width: 90%;
+}
+
+button {
+  border: black solid 1px;
+  border-radius: 25px;
+  margin: 1%;
+  padding: 3%;
+  background-color: white;
+}
+
+.scrollUnderline {
+  border-bottom: 2px solid white;
 }

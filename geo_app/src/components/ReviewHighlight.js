@@ -6,7 +6,7 @@ class ReviewHighlight extends Component {
         return (
             <div class="reviewhighlight">
                 <tr onClick = {() => this.props.getDisplayedReview(this.props.review)} >
-                    <td>{this.props.review.name}</td>
+                    <td className = "scrollUnderline">{this.props.review.name}</td>
                     <td>&nbsp;</td>
                     <td>{this.props.review.rating}</td>
                 </tr>

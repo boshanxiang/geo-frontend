@@ -5,7 +5,7 @@ class CenterMaps extends Component {
         return (
             <div class="centermaps flexitem">
                 <h1>Center Maps </h1>
-                <iframe>
+                <iframe className = "mapView">
                     
                 </iframe>
             </div>
