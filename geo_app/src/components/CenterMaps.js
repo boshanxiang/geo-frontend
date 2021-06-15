@@ -3,7 +3,7 @@ import {Map, GoogleApiWrapper} from "google-maps-react"
 
 const mapStyles = {
     width: '25%',
-    height: '25%'
+    height: '50%'
 }
 
 export class MapContainer extends Component {
@@ -37,19 +37,16 @@ export class MapContainer extends Component {
 
     render() {
         return (
-            // <div className="centermaps flexitem">
-            //     <h1>Center Maps </h1>
-            //     <iframe className = "mapView">
-                    
-            //     </iframe>
+            <div className="centermaps flexitem">
+                <h1>Center Maps </h1>
                 <Map 
                     google = {this.props.google}
                     xoom = {8}
                     style = {mapStyles}
                     initialCenter = {{lat: -1.2884, lng: 36.8233}}
                 ></Map>
-                // <button onClick = {() => this.searchRestaurant()}>FETCH</button>
-            // </div>
+                <button onClick = {() => this.searchRestaurant()}>FETCH</button>
+            </div>
         )
     }
 }
