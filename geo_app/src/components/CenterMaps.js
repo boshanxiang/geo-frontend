@@ -2,9 +2,9 @@ import { Component } from 'react'
 import {Map, GoogleApiWrapper} from "google-maps-react"
 
 const mapStyles = {
-    width: '100%',
-    height: '100%'
-  }
+    width: '90%',
+    height: '90%'
+}
 
 class CenterMaps extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class CenterMaps extends Component {
             locationURL: "https://maps.googleapis.com/maps/api/place/findplacefromtext/",
             output: "json?",
             input: "?input=",
-            searchText: "", // spaces must be replaced w "%20" - filter?
+            searchText: "mcdonalds", // spaces must be replaced w "%20" - filter?
             inputType: "&inputtype=textquery",
             keyword: "&keyword=restaurant",
             apiKey: "&key=AIzaSyDe6WRFuz0lxAuAJ1ZfiviZuQXRrtQCjc0",
@@ -27,11 +27,12 @@ class CenterMaps extends Component {
 
     }
 
-    // searchRestaurant = () => {
-    //     fetch(locationURL + output + input + searchText + inputType + keyword + apiKey)
-    //         .then(data => { return data.json() }, err => console.log(err))
-    //         .then(parsedData => this.setState({ location: parsedData }), err => console.log(err))
-    // }
+    searchRestaurant = () => {
+        fetch(this.state.locationURL + this.state.output + this.state.input + this.state.searchText + this.state.inputType + this.state.keyword + this.state.apiKey)
+            .then(data => { return data.json() }, err => console.log(err))
+            .then(parsedData => this.setState({ location: parsedData }), err => console.log(err))
+    }
+
     render() {
         return (
             <div class="centermaps flexitem">
