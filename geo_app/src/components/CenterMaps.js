@@ -46,6 +46,7 @@ class CenterMaps extends Component {
                     style = {mapStyles}
                     initialCenter = {{lat: Number(this.state.lat), lng: Number(this.state.lng)}}
                 ></Map> */}
+                <button onClick = {() => this.searchRestaurant}>FETCH</button>
             </div>
         )
     }
