@@ -1,54 +1,75 @@
 import { Component } from 'react'
-import {Map, GoogleApiWrapper} from "google-maps-react"
+import {Map, GoogleApiWrapper, InfoWindow, Marker} from "google-maps-react"
+import CurrentLocation from './Map';
 
 const mapStyles = {
-    width: '90%',
-    height: '90%'
+    width: '35%',
+    height: '60%'
 }
 
-class CenterMaps extends Component {
-    constructor(props) {
+export class MapContainer extends Component {
+    constructor(props){
         super(props)
+
         this.state = {
-            // http request = locationURL + output + input + search text + inputtype + optional params + apikey
-            locationURL: "https://maps.googleapis.com/maps/api/place/findplacefromtext/",
-            output: "json?",
-            input: "?input=",
-            searchText: "mcdonalds", // spaces must be replaced w "%20" - filter?
-            inputType: "&inputtype=textquery",
-            keyword: "&keyword=restaurant",
-            apiKey: "&key=AIzaSyDe6WRFuz0lxAuAJ1ZfiviZuQXRrtQCjc0",
-            lat: "",
-            lng: "",
-            location: {}
+            showingInfoWindow: false,
+            activeMarker: {},
+            selectedPlace: {}
         }
     }
-    setSearchText = () => {
 
-    }
+    onMarkerClick = (props, marker, e) =>
+    this.setState({
+      showingInfoWindow: true,
+      selectedPlace: props,
+      activeMarker: marker
+    });
 
-    searchRestaurant = () => {
-        fetch(this.state.locationURL + this.state.output + this.state.input + this.state.searchText + this.state.inputType + this.state.keyword + this.state.apiKey)
-            .then(data => { return data.json() }, err => console.log(err))
-            .then(parsedData => this.setState({ location: parsedData }), err => console.log(err))
+  onClose = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
     }
+  };
 
     render() {
         return (
-            <div class="centermaps flexitem">
-                <h1>Center Maps </h1>
-                <iframe className = "mapView">
-                    
-                </iframe>
-                {/* <Map 
-                    google = {this.props.google}
-                    xoom = {8}
-                    style = {mapStyles}
-                    initialCenter = {{lat: Number(this.state.lat), lng: Number(this.state.lng)}}
-                ></Map> */}
+            <div className="centermaps flexitem">
+                {/* <CurrentLocation
+                    centerAroundCurrentLocation
+                    google={this.props.google}
+                > */}
+                <Map
+                    google={this.props.google}
+                    zoom={14}
+                    style={mapStyles}
+                    initialCenter={
+                    {
+                        lat: -1.2884,
+                        lng: 36.8233
+                    }
+                    }
+                >
+                    <Marker
+                        onClick={this.onMarkerClick}
+                        name={'Current Location'}
+                        />
+                    <InfoWindow
+                        marker={this.state.activeMarker}
+                        visible={this.state.showingInfoWindow}
+                        onClose={this.onClose}
+                        >
+                        <h4>{this.state.selectedPlace.name}</h4>
+                    </InfoWindow>
+                {/* </CurrentLocation> */}
+                </Map>
             </div>
         )
     }
 }
 
-export default CenterMaps 
+export default GoogleApiWrapper({
+    apiKey: 'AIzaSyCwksum9i8ufeThaXMWHAjrzEexx8j2qJc'
+  })(MapContainer)

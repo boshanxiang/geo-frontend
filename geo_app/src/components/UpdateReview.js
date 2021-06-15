@@ -60,7 +60,7 @@ class UpdateReview extends Component {
 
     render() {
         return (
-            <div class="updatereview">
+            <div className="updatereview">
                 <h1>Update review  </h1>
                 <form onSubmit={this.handleSubmit} >
                     <label htmlFor="name"></label>

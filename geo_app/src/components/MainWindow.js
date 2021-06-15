@@ -112,7 +112,7 @@ class MainWindow extends Component {
 
     render() {
         return (
-            <div class="mainwindow">
+            <div className="mainwindow">
                 < LeftScroll reviews={this.state.reviews} getDisplayedReview={this.getDisplayedReview} toggleNewReview={this.toggleNewReview} />
                 < CenterMaps />
                 < RightPanel showReview={this.state.showReview} newReview={this.state.newReview} updateReview={this.state.updateReview} displayedReview={this.state.displayedReview} handleAddReview={this.handleAddReview} toggleUpdateReview={this.toggleUpdateReview} deleteReview={this.deleteReview} handleUpdateReview={this.handleUpdateReview} />

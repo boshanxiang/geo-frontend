@@ -78,7 +78,8 @@ code {
   margin-right: 1%;
   margin-left: 1%;
   padding-right: 3%;
-  padding-left: 3%;;
+  padding-left: 3%;
+  color: black;
 
 }
 
@@ -103,4 +104,9 @@ button {
 .scrollUnderline {
   border-bottom: 2px solid white;
   cursor: pointer;
+}
+
+.map {
+  width: 50%;
+  height: 50%;
 }
