@@ -37,7 +37,7 @@ export class MapContainer extends Component {
 
     render() {
         return (
-            // <div class="centermaps flexitem">
+            // <div className="centermaps flexitem">
             //     <h1>Center Maps </h1>
             //     <iframe className = "mapView">
                     

@@ -4,7 +4,7 @@ class ReviewHighlight extends Component {
 
     render() {
         return (
-            <tr class="reviewhighlight" onClick = {() => this.props.getDisplayedReview(this.props.review)} >
+            <tr className="reviewhighlight" onClick = {() => this.props.getDisplayedReview(this.props.review)} >
                 <td className = "scrollUnderline">{this.props.review.name}</td>
                 <td>&nbsp;</td>
                 <td>{this.props.review.rating}</td>
