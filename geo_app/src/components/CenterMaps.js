@@ -27,11 +27,11 @@ class CenterMaps extends Component {
 
     }
 
-    searchRestaurant = () => {
-        fetch(locationURL + output + input + searchText + inputType + keyword + apiKey)
-            .then(data => { return data.json() }, err => console.log(err))
-            .then(parsedData => this.setState({ location: parsedData }), err => console.log(err))
-    }
+    // searchRestaurant = () => {
+    //     fetch(locationURL + output + input + searchText + inputType + keyword + apiKey)
+    //         .then(data => { return data.json() }, err => console.log(err))
+    //         .then(parsedData => this.setState({ location: parsedData }), err => console.log(err))
+    // }
     render() {
         return (
             <div class="centermaps flexitem">
