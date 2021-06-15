@@ -5,9 +5,51 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  border: 1px solid black;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.header, .footer, .mainwindow, .leftscroll, .centermaps, .rightpanel, .reviewhighlight, .newreview, .showreview, .updatereview {
+  border: 1px solid black;
+}
+
+.header {
+  background-color: cornflowerblue;
+  padding: 1%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  background-color: coral;
+  padding: 1%;
+}
+
+.mainwindow {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-basis: 31%;
+  justify-content: space-around;
+  align-items: stretch;
+
+  background-color:darkgrey;
+}
+
+.leftscroll {
+
+}
+
+.centermaps {
+
+}
+
+.rightpanel {
+
+
 }

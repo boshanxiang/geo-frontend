@@ -1,17 +1,17 @@
 import { Component } from 'react'
-import Left_scroll from './Left_scroll'
-import Center_maps from './Center_maps'
-import Right_panel from './Right_panel'
+import LeftScroll from './LeftScroll'
+import CenterMaps from './CenterMaps'
+import RightPanel from './RightPanel'
 
 const baseURL = 'http://localhost:3003'
 
-class Main_window extends Component {
+class MainWindow extends Component {
     constructor(props) {
         super(props)
         this.state = {
           reviews: [],
           newReview: false,
-          editReview: false,
+          updateReview: false,
           showReview: true,
           displayedReview: {},
         }
@@ -32,7 +32,7 @@ class Main_window extends Component {
         this.setState({
             displayedReview: review,
             newReview: false,
-            editReview: false,
+            updateReview: false,
             showReview: true
         })
     }
@@ -46,7 +46,7 @@ class Main_window extends Component {
         }
         this.setState({
             newReview: false,
-            editReview: false,
+            updateReview: false,
             showReview: true,
             displayedReview: updateDisplayedReview
         })
@@ -55,15 +55,15 @@ class Main_window extends Component {
     toggleNewReview = () => {
         this.setState({
             newReview: true,
-            editReview: false,
+            updateReview: false,
             showReview: false
         })
     }
 
-    toggleEditReview = () => {
+    toggleUpdateReview = () => {
         this.setState({
             newReview: false,
-            editReview: true,
+            updateReview: true,
             showReview: false
         })
     }
@@ -74,7 +74,7 @@ class Main_window extends Component {
             displayedReview: review,
             reviews: updatedReviews,
             newReview: false,
-            editReview: false,
+            updateReview: false,
             showReview: true
         })
     }
@@ -101,7 +101,7 @@ class Main_window extends Component {
             reviews: copyReviews,
             displayedReview: updatedReview,
             ewReview: false,
-            editReview: false,
+            updateReview: false,
             showReview: true
         })
         
@@ -109,13 +109,13 @@ class Main_window extends Component {
 
     render() {
         return (
-            <div>
-                < Left_scroll reviews = {this.state.reviews} getDisplayedReview = {this.getDisplayedReview} toggleNewReview = {this.toggleNewReview} />
-                < Center_maps />
-                < Right_panel showReview = {this.state.showReview} newReview = {this.state.newReview} editReview = {this.state.editReview} displayedReview = {this.state.displayedReview} handleAddReview = {this.handleAddReview} toggleEditReview = {this.toggleEditReview} deleteReview = {this.deleteReview} handleUpdateReview = {this.handleUpdateReview}/>
+            <div class="mainwindow">
+                < LeftScroll reviews = {this.state.reviews} getDisplayedReview = {this.getDisplayedReview} toggleNewReview = {this.toggleNewReview} />
+                < CenterMaps />
+                < RightPanel showReview = {this.state.showReview} newReview = {this.state.newReview} updateReview = {this.state.updateReview} displayedReview = {this.state.displayedReview} handleAddReview = {this.handleAddReview} toggleUpdateReview = {this.toggleUpdateReview} deleteReview = {this.deleteReview} handleUpdateReview = {this.handleUpdateReview}/>
             </div>
         )
     }
 }
 
-export default Main_window
+export default MainWindow
