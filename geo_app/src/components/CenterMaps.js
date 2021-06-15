@@ -1,10 +1,6 @@
 import { Component } from 'react'
 import {Map, GoogleApiWrapper, InfoWindow, Marker} from "google-maps-react"
-
-const mapStyles = {
-    width: '35%',
-    height: '60%'
-}
+import CurrentLocation from './Map';
 
 export class MapContainer extends Component {
     constructor(props){
@@ -36,15 +32,13 @@ export class MapContainer extends Component {
     render() {
         return (
             <div className="centermaps flexitem">
-                <Map 
-                    google = {this.props.google}
-                    xoom = {8}
-                    style = {mapStyles}
-                    initialCenter = {{lat: -1.2884, lng: 36.8233}}
+                <CurrentLocation
+                    centerAroundCurrentLocation
+                    google={this.props.google}
                 >
                     <Marker
                         onClick={this.onMarkerClick}
-                        name={'Kenyatta International Convention Centre'}
+                        name={'Current Location'}
                         />
                     <InfoWindow
                         marker={this.state.activeMarker}
@@ -53,7 +47,7 @@ export class MapContainer extends Component {
                         >
                         <h4>{this.state.selectedPlace.name}</h4>
                     </InfoWindow>
-                </Map>
+                </CurrentLocation>
 
             </div>
         )

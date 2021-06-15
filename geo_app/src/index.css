@@ -105,3 +105,8 @@ button {
   border-bottom: 2px solid white;
   cursor: pointer;
 }
+
+.map {
+  width: 50%;
+  height: 50%;
+}
