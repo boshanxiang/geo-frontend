@@ -52,12 +52,16 @@ class NewReview extends Component {
                 <form onSubmit = {this.handleSubmit} >
                     <label htmlFor = "name"></label>
                     <input type = "text" id = "name" name = "name" onChange = {this.handleChange} value = {this.state.title} placeholder = "Restaurant Name" />
+                    <br></br>
                     <label htmlFor = "description"></label>
                     <input type = "text" id = "description" name = "description" onChange = {this.handleChange} value = {this.state.description} placeholder = "Description" />
+                    <br></br>
                     <label htmlFor = "rating"></label>
                     <input type = "number" id = "rating" name = "rating" onChange = {this.handleChange} value = {this.state.rating} placeholder = "Rating" />
+                    <br></br>
                     <label htmlFor = "location"></label>
                     <input type = "text" id = "location" name = "location" onChange = {this.handleChange} value = {this.state.location} placeholder = "Location" />
+                    <br></br>
                     <input type = "submit" value = "Add Review" />
                 </form>
             </div>
