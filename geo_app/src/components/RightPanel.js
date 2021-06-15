@@ -4,6 +4,34 @@ import UpdateReview from './UpdateReview'
 import NewReview from './NewReview'
 
 class RightPanel extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            // http request = locationURL + output + input + search text + inputtype + optional params + apikey
+            locationURL: "https://maps.googleapis.com/maps/api/place/findplacefromtext/",
+            output: "json",
+            input: "?input=",
+            searchText: "mcdonalds", // spaces must be replaced w "%20" - filter?
+            inputType: "&inputtype=textquery",
+            keyword: "&keyword=restaurant",
+            apiKey: "&key=AIzaSyCwksum9i8ufeThaXMWHAjrzEexx8j2qJc",
+            lat: "",
+            lng: "",
+            location: []
+        }
+    }
+    setSearchText = () => {
+
+    }
+
+    searchRestaurant = () => {
+        console.log(this.state.locationURL + this.state.output + this.state.input + this.state.searchText + this.state.inputType + this.state.keyword + this.state.apiKey)
+        fetch(this.state.locationURL + this.state.output + this.state.input + this.state.searchText + this.state.inputType + this.state.keyword + this.state.apiKey)
+            .then(data => { return data.json() }, err => console.log(err))
+            .then(parsedData => this.setState({ location: parsedData }), err => console.log(err))
+        console.log(this.state.location)
+    }
+
     render() {
         return (
             <div className="rightpanel flexitem">
