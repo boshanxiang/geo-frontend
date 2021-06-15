@@ -84,8 +84,10 @@ button {
   margin: 1%;
   padding: 3%;
   background-color: white;
+  cursor: pointer;
 }
 
 .scrollUnderline {
   border-bottom: 2px solid white;
+  cursor: pointer;
 }
