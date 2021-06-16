@@ -13,7 +13,6 @@ class RightPanel extends Component {
             <MapDetails>
                 <div className="rightpanel flexitem">
                     <h1> Review </h1>
-                    <button onClick = {() => this.getMapsLocation()}>FETCH</button>
                     {
                         this.props.showReview ? < ShowReview displayedReview = {this.props.displayedReview} /> : <></>
                     }
