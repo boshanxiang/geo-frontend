@@ -4,7 +4,7 @@ import CurrentLocation from './Map';
 
 const mapStyles = {
     width: '100%',
-    height: '65%'
+    height: '65%',
 }
 
 export class MapContainer extends Component {
@@ -14,7 +14,7 @@ export class MapContainer extends Component {
         this.state = {
             showingInfoWindow: false,
             activeMarker: {},
-            selectedPlace: {}
+            selectedPlace: {},
         }
     }
 
@@ -34,25 +34,26 @@ export class MapContainer extends Component {
     }
   };
 
+  handleMapClick = () => {
+    this.setState({center: this.props.currentCenter})
+  }
+
     render() {
         return (
             <div>
                 <h1>Map Location</h1>
-                {/* <CurrentLocation
+                <CurrentLocation
                     centerAroundCurrentLocation
                     google={this.props.google}
-                > */}
-                <Map
+                    center={this.props.currentCenter}
+                    onClick={() => this.handleMapClick()}
+                >
+                {/* <CurrentLocation
                     google={this.props.google}
                     zoom={14}
                     style={mapStyles}
-                    initialCenter={
-                    {
-                        lat: -1.2884,
-                        lng: 36.8233
-                    }
-                    }
-                >
+                    initialCenter={this.props.currentCenter}
+                > */}
                     <Marker
                         onClick={this.onMarkerClick}
                         name={'Current Location'}
@@ -64,8 +65,7 @@ export class MapContainer extends Component {
                         >
                         <h4>{this.state.selectedPlace.name}</h4>
                     </InfoWindow>
-                {/* </CurrentLocation> */}
-                </Map>
+                </CurrentLocation>
             </div>
         )
     }
