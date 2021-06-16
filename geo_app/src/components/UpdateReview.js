@@ -61,18 +61,13 @@ class UpdateReview extends Component {
 
     render() {
         return (
-            <div className="updatereview">
-                <h1>Update review  </h1>
-                <form onSubmit={this.handleSubmit} >
-                    <label htmlFor="name"></label>
-                    <input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} placeholder="Restaurant Name" />
-                    <label htmlFor="description"></label>
-                    <input type="text" id="description" name="description" onChange={this.handleChange} value={this.state.description} placeholder="Description" />
-                    <label htmlFor="rating"></label>
-                    <input type="number" id="rating" name="rating" onChange={this.handleChange} value={this.state.rating} placeholder="Rating" />
-                    <input type="submit" value="Update Review" />
-                </form>
-            </div>
+            <form onSubmit={this.handleSubmit} >
+                <input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} placeholder="Restaurant Name" />
+                <input type="number" id="rating" name="rating" onChange={this.handleChange} value={this.state.rating} placeholder="Rating" />
+                <textarea type="textarea" rows="10" id="description" name="description" onChange={this.handleChange} value={this.state.description} placeholder="Description"></textarea>
+                <input type="text" id="location" name="location" onChange={this.handleChange} value={this.state.location} placeholder="Location" />
+                <input type="submit" value="Save Changes" />
+            </form>
         )
     }
 }
