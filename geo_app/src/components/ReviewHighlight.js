@@ -4,13 +4,18 @@ class ReviewHighlight extends Component {
 
     render() {
         return (
-            <tr className="reviewhighlight" onClick={() => this.props.getDisplayedReview(this.props.review)} >
-                <td className="scrollUnderline">{this.props.review.name}</td>
-                <td>&nbsp;</td>
-                <StarRatings className="stars" rating={this.props.review.rating} starDimension="40px" starRatedColor="yellow" />
-            </tr>
+            <table>
+                <tbody>
+                    <tr className="reviewhighlight" onClick={() => this.props.getDisplayedReview(this.props.review)} >
+                        <td><div className="restaurantName">{this.props.review.name}</div></td>
+                    </tr>
+                    <tr>
+                        <StarRatings className="stars" rating={this.props.review.rating} starDimension="15px" starSpacing="1px" starRatedColor="yellow" />
+                    </tr>
+                </tbody>
+            </table>
         )
     }
-} <StarRatings className="stars" rating={this.props.review.rating} starDimension="40px" starRatedColor="yellow" />
+}
 
 export default ReviewHighlight

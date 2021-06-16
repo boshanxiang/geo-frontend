@@ -38,9 +38,7 @@ code {
 }
 
 .app {
-  
   max-height: 75vh;
-
 }
 
 
@@ -63,14 +61,18 @@ code {
 }
 
 .flexitem {
-  max-height:75vh;
-  height: 75vh;
-  overflow: auto;
-
+  max-height: calc(75vh - 55px);
+  height: calc(75vh - 55px);
 }
 
 .leftscroll {
-  width: 20%;
+  width: 25%;
+}
+
+.restaurant-list {
+  overflow-y: auto;
+  max-height: calc(75vh - 130px);
+  height: calc(75vh - 130px);
 }
 
 .centermaps {
@@ -80,12 +82,11 @@ code {
   padding-right: 3%;
   padding-left: 3%;
   color: black;
-
 }
 
 .rightpanel {
   width: 25%;
-
+  z-index: 1000;
 }
 
 .mapView {
@@ -101,12 +102,37 @@ button {
   cursor: pointer;
 }
 
-.scrollUnderline {
-  border-bottom: 2px solid white;
+.restaurantName {
   cursor: pointer;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  font-weight: normal;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 .map {
   width: 50%;
   height: 50%;
+}
+
+.mainwindow > div:nth-child(2) {
+    margin: 1%;
+    padding: 1%;
+    max-height: 75vh;
+    height: 75vh;
+    overflow: auto;
+    width: 45%;
+    margin-right: 1%;
+    margin-left: 1%;
+    padding-right: 3%;
+    padding-left: 3%;
+    color: white;
+}
+
+.star-ratings {
+  margin-bottom: 20px;
 }

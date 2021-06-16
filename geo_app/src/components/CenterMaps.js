@@ -3,8 +3,8 @@ import {Map, GoogleApiWrapper, InfoWindow, Marker} from "google-maps-react"
 import CurrentLocation from './Map';
 
 const mapStyles = {
-    width: '35%',
-    height: '60%'
+    width: '40%',
+    height: '50%'
 }
 
 export class MapContainer extends Component {
@@ -36,7 +36,8 @@ export class MapContainer extends Component {
 
     render() {
         return (
-            <div className="centermaps flexitem">
+            <div>
+                <h1>Map Location</h1>
                 {/* <CurrentLocation
                     centerAroundCurrentLocation
                     google={this.props.google}
