@@ -16,7 +16,7 @@ class RightPanel extends Component {
         }
     }
 
-    getMapsLocation = () => {
+    getMapsLocation = (latLngFunc) => {
         console.log(baseURL + "/maps/" + this.state.userLocation)
         fetch(baseURL + "/maps/" + this.state.userLocation)
             .then(data => {return data.json()}, error => console.log(error))
@@ -25,11 +25,13 @@ class RightPanel extends Component {
                 lat: parsedData.candidates[0].geometry.location.lat,
                 lng: parsedData.candidates[0].geometry.location.lng
             }, error => console.log(error)))
-        console.log(this.state.location)
+            .then(() => latLngFunc())
     }
 
-    setUserLocation = (location) => {
-        this.setState({userLocation: location}, this.getMapsLocation) // referenced https://reactjs.org/docs/react-component.html#setstate for second param of setState
+    setUserLocation = (location, latLngFunc) => {
+        this.setState({userLocation: location}, () => {
+            this.getMapsLocation(latLngFunc) 
+        }) // referenced https://reactjs.org/docs/react-component.html#setstate for second param of setState and https://stackoverflow.com/questions/47253186/react-passing-two-functions-as-a-call-backs-to-this-setstate/47253225 for organization of passing 2 params
     }
 
     render() {
@@ -41,10 +43,10 @@ class RightPanel extends Component {
                     this.props.showReview ? < ShowReview displayedReview = {this.props.displayedReview} /> : <></>
                 }
                 {
-                    this.props.updateReview ? < UpdateReview displayedReview = {this.props.displayedReview} handleUpdateReview = {this.props.handleUpdateReview} /> : <> </>
+                    this.props.updateReview ? < UpdateReview displayedReview = {this.props.displayedReview} handleUpdateReview = {this.props.handleUpdateReview}  lat = {this.state.lat} lng = {this.state.lng} /> : <> </>
                 }
                 {
-                    this.props.newReview ? < NewReview handleAddReview = {this.props.handleAddReview} setUserLocation = {this.setUserLocation} /> : <></>
+                    this.props.newReview ? < NewReview handleAddReview = {this.props.handleAddReview} setUserLocation = {this.setUserLocation} lat = {this.state.lat} lng = {this.state.lng} /> : <></>
                 }
                 <table>
                     <tbody>

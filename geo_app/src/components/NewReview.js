@@ -22,12 +22,19 @@ class NewReview extends Component {
         this.setState({ [e.currentTarget.id]: e.currentTarget.value })
     }
 
+    setLatLng = () => {
+       this.setState({
+            lat: this.props.lat,
+            lng: this.props.lng
+        }, () => console.log(this.state)) 
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.setUserLocation(this.state.name)
+        this.props.setUserLocation(this.state.name, this.setLatLng)
         fetch(`${baseURL}/reviews`, {
             method: "POST",
-            body: JSON.stringify({ name: this.state.name, description: this.state.description, rating: this.state.rating, location: this.state.location }),
+            body: JSON.stringify({ name: this.state.name, description: this.state.description, rating: this.state.rating, lat: this.state.lat, lng: this.state.lng }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -38,7 +45,8 @@ class NewReview extends Component {
                     name: "",
                     description: "",
                     rating: undefined,
-                    location: "",
+                    lat: "",
+                    lng: "",
                     address: "",
                     url: "",
                     phone: "",
