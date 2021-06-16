@@ -149,6 +149,8 @@ h5 {
 
 .star-ratings {
   margin-bottom: 20px;
+  margin: 1px;
+
 }
 
 .inline {
@@ -157,9 +159,6 @@ h5 {
 
 .rightalign {
   float: right;
-}
-
-  margin: 1px;
 }
 
 .showreview h3 {
