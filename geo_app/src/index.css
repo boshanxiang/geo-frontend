@@ -136,3 +136,7 @@ h5 {
 .star-ratings {
   margin-bottom: 20px;
 }
+
+.inline {
+  display: inline;
+}
