@@ -21,7 +21,7 @@ class Login extends Component {
     logInUser = (e) => {
         e.preventDefault()
     
-        fetch(`${baseURL}/sessions`, {
+        fetch(`${baseURL}/auth/signin`, {
             method: "POST",
             body: JSON.stringify({
                 username: this.state.username,
@@ -51,7 +51,7 @@ class Login extends Component {
     submitNewUser = (e) => {
         e.preventDefault()
 
-        fetch(`${baseURL}/users`, {
+        fetch(`${baseURL}/auth/register`, {
             method: "POST",
             body: JSON.stringify({
                 username: this.state.username,
@@ -69,26 +69,26 @@ class Login extends Component {
         }).catch(error => console.log({"Error": error}))
     }
 
-    logout = () => {
-        fetch(`${baseURL}/sessions`, {
-            method: "DELETE",
-            body: JSON.stringify({
-                username: this.state.username,
-                password: this.state.password,
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(res => res.json())
-        .then(resJson => {
-            this.setState({
-                userLoggedIn: false,
-                loggedInUser: '',
-                username: '',
-                password: ''
-            })
-        }).catch(error => console.log({"Error": error}))
-    }
+    // logout = () => {
+    //     fetch(`${baseURL}/sessions`, {
+    //         method: "DELETE",
+    //         body: JSON.stringify({
+    //             username: this.state.username,
+    //             password: this.state.password,
+    //         }),
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     }).then(res => res.json())
+    //     .then(resJson => {
+    //         this.setState({
+    //             userLoggedIn: false,
+    //             loggedInUser: '',
+    //             username: '',
+    //             password: ''
+    //         })
+    //     }).catch(error => console.log({"Error": error}))
+    // }
 
     toggleShowLogin = () => {
         this.setState({
@@ -190,7 +190,7 @@ class Login extends Component {
                         <span className="rightalign inline">
                             <p className="inline">Welcome {this.state.loggedInUser} &nbsp; | &nbsp;</p>
                             &nbsp; &nbsp;
-                            <div className="inline" onClick={() => this.logout()}>Log Out</div>
+                            <div className="inline" /*onClick={() => this.logout()}*/>Log Out</div>
                         </span>
                         
                         :

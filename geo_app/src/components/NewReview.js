@@ -1,8 +1,10 @@
 import { Component } from 'react'
+import {MapDetailsContext} from "./Context/MapDetailsContext"
 
 const baseURL = 'http://localhost:3003'
 
 class NewReview extends Component {
+    static contextType = MapDetailsContext // use this.context to access context
     constructor(props) {
         super(props)
         this.state = {
@@ -22,12 +24,20 @@ class NewReview extends Component {
         this.setState({ [e.currentTarget.id]: e.currentTarget.value })
     }
 
-    handleSubmit = (e) => {
+    setLatLng = async () => {
+        await this.context.setUserLocation(this.state.name)
+        this.setState({
+            lat: this.context.lat,
+            lng: this.context.lng
+        }, () => console.log(this.state)) 
+    }
+
+    handleSubmit = async (e) => {
         e.preventDefault()
-        this.props.setUserLocation(this.state.name)
+        await this.setLatLng()
         fetch(`${baseURL}/reviews`, {
             method: "POST",
-            body: JSON.stringify({ name: this.state.name, description: this.state.description, rating: this.state.rating, location: this.state.location }),
+            body: JSON.stringify({ name: this.state.name, description: this.state.description, rating: this.state.rating, lat: this.context.lat, lng: this.context.lng }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -38,7 +48,8 @@ class NewReview extends Component {
                     name: "",
                     description: "",
                     rating: undefined,
-                    location: "",
+                    lat: "",
+                    lng: "",
                     address: "",
                     url: "",
                     phone: "",
@@ -49,23 +60,17 @@ class NewReview extends Component {
 
     render() {
         return (
-            <div className="newreview">
-                <h1>New Review  </h1>
                 <form onSubmit={this.handleSubmit} >
-                    <label htmlFor="name"></label>
                     <input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.title} placeholder="Restaurant Name" />
-                    <br></br>
-                    <label htmlFor="description"></label>
-                    <input type="text" id="description" name="description" onChange={this.handleChange} value={this.state.description} placeholder="Description" />
-                    <br></br>
-                    <label htmlFor="rating"></label>
                     <input type="number" id="rating" name="rating" onChange={this.handleChange} value={this.state.rating} placeholder="Rating" min="0" max="5" />
-                    <br></br>
-                    <input type="submit" value="Add Review" />
+                    <textarea type="textarea" rows="10" id="description" name="description" onChange={this.handleChange} value={this.state.description} placeholder="Description"> </textarea>
+                    <input type="text" id="location" name="location" onChange={this.handleChange} value={this.state.location} placeholder="Location" />
+                    <input type="submit" value="Save Review" />
                 </form>
-            </div>
         )
     }
 }
 
 export default NewReview
+
+// referenced https://www.pluralsight.com/guides/executing-promises-in-a-react-component to structure promise in react

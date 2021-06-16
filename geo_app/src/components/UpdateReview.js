@@ -1,15 +1,19 @@
 import { Component } from 'react'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {MapDetailsContext} from "./Context/MapDetailsContext"
+
 const baseURL = 'http://localhost:3003'
 
 class UpdateReview extends Component {
+    static contextType = MapDetailsContext // use this.context to access context
     constructor(props) {
         super(props)
         this.state = {
             name: "",
             description: "",
             rating: undefined,
-            location: "",
+            lat: "",
+            lng: "",
             address: "",
             url: "",
             phone: "",
@@ -26,7 +30,6 @@ class UpdateReview extends Component {
             name: this.props.displayedReview.name,
             description: this.props.displayedReview.description,
             rating: this.props.displayedReview.rating,
-            location: this.props.displayedReview.location,
         })
     }
 
@@ -34,11 +37,20 @@ class UpdateReview extends Component {
         this.setState({ [e.currentTarget.id]: e.currentTarget.value })
     }
 
-    handleSubmit = (e) => {
+    setLatLng = async () => {
+        await this.context.setUserLocation(this.state.name)
+        this.setState({
+            lat: this.context.lat,
+            lng: this.context.lng
+        }, () => console.log(this.state)) 
+    }
+
+    handleSubmit = async (e) => {
         e.preventDefault()
+        await this.setLatLng()
         fetch(`${baseURL}/reviews/${this.props.displayedReview._id}`, {
             method: "PUT",
-            body: JSON.stringify({ name: this.state.name, description: this.state.description, rating: this.state.rating, location: this.state.location }),
+            body: JSON.stringify({ name: this.state.name, description: this.state.description, rating: this.state.rating, lat: this.context.lat, lng: this.context.lng }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -49,7 +61,8 @@ class UpdateReview extends Component {
                     name: "",
                     description: "",
                     rating: 0,
-                    location: "",
+                    lat: "",
+                    lng: "",
                     address: "",
                     url: "",
                     phone: "",
@@ -60,20 +73,17 @@ class UpdateReview extends Component {
 
     render() {
         return (
-            <div className="updatereview">
-                <h1>Update review  </h1>
-                <form onSubmit={this.handleSubmit} >
-                    <label htmlFor="name"></label>
-                    <input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} placeholder="Restaurant Name" />
-                    <label htmlFor="description"></label>
-                    <input type="text" id="description" name="description" onChange={this.handleChange} value={this.state.description} placeholder="Description" />
-                    <label htmlFor="rating"></label>
-                    <input type="number" id="rating" name="rating" onChange={this.handleChange} value={this.state.rating} placeholder="Rating" />
-                    <input type="submit" value="Update Review" />
-                </form>
-            </div>
+            <form onSubmit={this.handleSubmit} >
+                <input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} placeholder="Restaurant Name" />
+                <input type="number" id="rating" name="rating" onChange={this.handleChange} value={this.state.rating} placeholder="Rating" />
+                <textarea type="textarea" rows="10" id="description" name="description" onChange={this.handleChange} value={this.state.description} placeholder="Description"></textarea>
+                <input type="text" id="location" name="location" onChange={this.handleChange} value={this.state.location} placeholder="Location" />
+                <input type="submit" value="Save Changes" />
+            </form>
         )
     }
 }
 
 export default UpdateReview
+
+// referenced https://www.pluralsight.com/guides/executing-promises-in-a-react-component to structure promise in react

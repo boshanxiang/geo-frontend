@@ -4,7 +4,7 @@ class Footer extends Component {
     render() {
         return (
             <footer className="footer">
-                <p>Footer</p>
+                <p>©2021 Geo App -  All Rights Reserved.</p>
             </footer>
         )
     }
