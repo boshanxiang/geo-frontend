@@ -9,7 +9,8 @@ class NewReview extends Component {
             name: "",
             description: "",
             rating: undefined,
-            location: "",
+            lat: "",
+            lng: "",
             address: "",
             url: "",
             phone: "",
@@ -59,9 +60,6 @@ class NewReview extends Component {
                     <br></br>
                     <label htmlFor="rating"></label>
                     <input type="number" id="rating" name="rating" onChange={this.handleChange} value={this.state.rating} placeholder="Rating" min="0" max="5" />
-                    <br></br>
-                    <label htmlFor="location"></label>
-                    <input type="text" id="location" name="location" onChange={this.handleChange} value={this.state.location} placeholder="Location" />
                     <br></br>
                     <input type="submit" value="Add Review" />
                 </form>

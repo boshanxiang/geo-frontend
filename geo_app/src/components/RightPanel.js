@@ -29,7 +29,7 @@ class RightPanel extends Component {
     }
 
     setUserLocation = (location) => {
-        this.setState({userLocation: location}, this.getMapsLocation) // referenced https://reactjs.org/docs/react-component.html#setstate
+        this.setState({userLocation: location}, this.getMapsLocation) // referenced https://reactjs.org/docs/react-component.html#setstate for second param of setState
     }
 
     render() {
@@ -44,7 +44,7 @@ class RightPanel extends Component {
                     this.props.updateReview ? < UpdateReview displayedReview = {this.props.displayedReview} handleUpdateReview = {this.props.handleUpdateReview} /> : <> </>
                 }
                 {
-                    this.props.newReview ? < NewReview handleAddReview = {this.props.handleAddReview} /> : <></>
+                    this.props.newReview ? < NewReview handleAddReview = {this.props.handleAddReview} setUserLocation = {this.setUserLocation} /> : <></>
                 }
                 <table>
                     <tbody>
@@ -73,3 +73,4 @@ class RightPanel extends Component {
 }
 
 export default RightPanel
+
