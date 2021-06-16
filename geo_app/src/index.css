@@ -151,7 +151,15 @@ h5 {
 }
 
 .star-ratings {
-  margin: 1px;
+  margin-bottom: 20px;
+}
+
+.inline {
+  display: inline;
+}
+
+.rightalign {
+  float: right;
 }
 
 .showreview h3 {

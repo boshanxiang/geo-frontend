@@ -2,36 +2,11 @@ import { Component } from 'react'
 import ShowReview from './ShowReview'
 import UpdateReview from './UpdateReview'
 import NewReview from './NewReview'
+import {MapDetails} from "./Context/MapDetailsContext"
 
 const baseURL = 'http://localhost:3003'
 
 class RightPanel extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            userLocation: "", 
-            lat: "",
-            lng: "",
-            location: {}
-        }
-    }
-
-    getMapsLocation = () => {
-        console.log(baseURL + "/maps/" + this.state.userLocation)
-        fetch(baseURL + "/maps/" + this.state.userLocation)
-            .then(data => {return data.json()}, error => console.log(error))
-            .then(parsedData => this.setState({
-                location: parsedData,
-                lat: parsedData.candidates[0].geometry.location.lat,
-                lng: parsedData.candidates[0].geometry.location.lng
-            }, error => console.log(error)))
-        console.log(this.state.location)
-    }
-
-    setUserLocation = (location) => {
-        this.setState({userLocation: location}, this.getMapsLocation) // referenced https://reactjs.org/docs/react-component.html#setstate for second param of setState
-    }
-
     render() {
         return (
             <div className="rightpanel flexitem">

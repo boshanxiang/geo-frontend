@@ -1,15 +1,19 @@
 import { Component } from 'react'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {MapDetailsContext} from "./Context/MapDetailsContext"
+
 const baseURL = 'http://localhost:3003'
 
 class UpdateReview extends Component {
+    static contextType = MapDetailsContext // use this.context to access context
     constructor(props) {
         super(props)
         this.state = {
             name: "",
             description: "",
             rating: undefined,
-            location: "",
+            lat: "",
+            lng: "",
             address: "",
             url: "",
             phone: "",
@@ -26,7 +30,6 @@ class UpdateReview extends Component {
             name: this.props.displayedReview.name,
             description: this.props.displayedReview.description,
             rating: this.props.displayedReview.rating,
-            location: this.props.displayedReview.location,
         })
     }
 
@@ -34,11 +37,20 @@ class UpdateReview extends Component {
         this.setState({ [e.currentTarget.id]: e.currentTarget.value })
     }
 
-    handleSubmit = (e) => {
+    setLatLng = async () => {
+        await this.context.setUserLocation(this.state.name)
+        this.setState({
+            lat: this.context.lat,
+            lng: this.context.lng
+        }, () => console.log(this.state)) 
+    }
+
+    handleSubmit = async (e) => {
         e.preventDefault()
+        await this.setLatLng()
         fetch(`${baseURL}/reviews/${this.props.displayedReview._id}`, {
             method: "PUT",
-            body: JSON.stringify({ name: this.state.name, description: this.state.description, rating: this.state.rating, location: this.state.location }),
+            body: JSON.stringify({ name: this.state.name, description: this.state.description, rating: this.state.rating, lat: this.context.lat, lng: this.context.lng }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -49,7 +61,8 @@ class UpdateReview extends Component {
                     name: "",
                     description: "",
                     rating: 0,
-                    location: "",
+                    lat: "",
+                    lng: "",
                     address: "",
                     url: "",
                     phone: "",
@@ -72,3 +85,5 @@ class UpdateReview extends Component {
 }
 
 export default UpdateReview
+
+// referenced https://www.pluralsight.com/guides/executing-promises-in-a-react-component to structure promise in react
