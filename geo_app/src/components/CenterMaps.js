@@ -3,9 +3,15 @@ import {Map, GoogleApiWrapper, InfoWindow, Marker} from "google-maps-react"
 import CurrentLocation from './Map';
 
 const mapStyles = {
+<<<<<<< Updated upstream
     width: '40%',
     height: '50%'
 }
+=======
+    width: '50%',
+    height: '100%'
+  }
+>>>>>>> Stashed changes
 
 export class MapContainer extends Component {
     constructor(props){
@@ -71,6 +77,12 @@ export class MapContainer extends Component {
     }
 }
 
+<<<<<<< Updated upstream
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyCwksum9i8ufeThaXMWHAjrzEexx8j2qJc'
   })(MapContainer)
+=======
+export default CenterMaps({
+    
+})
+>>>>>>> Stashed changes
