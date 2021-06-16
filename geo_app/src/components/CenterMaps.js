@@ -46,11 +46,11 @@ export class MapContainer extends Component {
                     google={this.props.google}
                     zoom={14}
                     style={mapStyles}
-                    initialCenter={
-                    {
-                        lat: Number(this.props.review.lat),
-                        lng: Number(this.props.review.lng)
-                    }
+                    initialCenter={this.props.initialCenter
+                    // {
+                    //     lat: parseFloat(this.props.review.lat),
+                    //     lng: parseFloat(this.props.review.lng)
+                    // }
                     }
                 >
                     <Marker
