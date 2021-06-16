@@ -148,6 +148,18 @@ h5 {
 }
 
 .star-ratings {
+<<<<<<< HEAD
+  margin-bottom: 20px;
+}
+
+.inline {
+  display: inline;
+}
+
+.rightalign {
+  float: right;
+}
+=======
   margin: 1px;
 }
 
@@ -156,3 +168,4 @@ h5 {
   margin-bottom: 1px;
 }
 
+>>>>>>> 13783bed8fa0139cba81b71e5928dc74836c08b3
