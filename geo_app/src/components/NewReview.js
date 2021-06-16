@@ -1,8 +1,10 @@
 import { Component } from 'react'
+import {MapDetailsContext} from "./Context/MapDetailsContext"
 
 const baseURL = 'http://localhost:3003'
 
 class NewReview extends Component {
+    static contextType = MapDetailsContext // use this.context to access context
     constructor(props) {
         super(props)
         this.state = {
@@ -22,19 +24,20 @@ class NewReview extends Component {
         this.setState({ [e.currentTarget.id]: e.currentTarget.value })
     }
 
-    setLatLng = () => {
-       this.setState({
-            lat: this.props.lat,
-            lng: this.props.lng
+    setLatLng = async () => {
+        await this.context.setUserLocation(this.state.name)
+        this.setState({
+            lat: this.context.lat,
+            lng: this.context.lng
         }, () => console.log(this.state)) 
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault()
-        this.props.setUserLocation(this.state.name, this.setLatLng)
+        await this.setLatLng()
         fetch(`${baseURL}/reviews`, {
             method: "POST",
-            body: JSON.stringify({ name: this.state.name, description: this.state.description, rating: this.state.rating, lat: this.state.lat, lng: this.state.lng }),
+            body: JSON.stringify({ name: this.state.name, description: this.state.description, rating: this.state.rating, lat: this.context.lat, lng: this.context.lng }),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -69,3 +72,5 @@ class NewReview extends Component {
 }
 
 export default NewReview
+
+// referenced https://www.pluralsight.com/guides/executing-promises-in-a-react-component to structure promise in react
