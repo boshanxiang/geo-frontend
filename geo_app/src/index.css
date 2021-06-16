@@ -22,6 +22,20 @@ code {
   border: 3px solid white;
 } */
 
+form input, form textarea {
+  display: block;
+  width: 95%;
+  margin: 8px 0;
+  padding: 4px 8px;
+  min-width: 200px;
+  border: 1px solid #ccc;
+}
+
+form input[type=submit] {
+  width: 100px;
+  min-width: 100px;
+}
+
 .header {
   background-color: cornflowerblue;
   padding: 1%;
@@ -134,5 +148,11 @@ h5 {
 }
 
 .star-ratings {
-  margin-bottom: 20px;
+  margin: 1px;
 }
+
+.showreview h3 {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
