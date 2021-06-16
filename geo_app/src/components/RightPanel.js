@@ -3,39 +3,40 @@ import ShowReview from './ShowReview'
 import UpdateReview from './UpdateReview'
 import NewReview from './NewReview'
 
+const baseURL = 'http://localhost:3003'
+
 class RightPanel extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // http request = locationURL + output + input + search text + inputtype + optional params + apikey
-            locationURL: "https://maps.googleapis.com/maps/api/place/findplacefromtext/",
-            output: "json",
-            input: "?input=",
-            searchText: "mcdonalds", // spaces must be replaced w "%20" - filter?
-            inputType: "&inputtype=textquery",
-            keyword: "&keyword=restaurant",
-            apiKey: "&key=AIzaSyCwksum9i8ufeThaXMWHAjrzEexx8j2qJc",
+            userLocation: "", 
             lat: "",
             lng: "",
-            location: []
+            location: {}
         }
     }
-    setSearchText = () => {
 
+    getMapsLocation = () => {
+        console.log(baseURL + "/maps/" + this.state.userLocation)
+        fetch(baseURL + "/maps/" + this.state.userLocation)
+            .then(data => {return data.json()}, error => console.log(error))
+            .then(parsedData => this.setState({
+                location: parsedData,
+                lat: parsedData.candidates[0].geometry.location.lat,
+                lng: parsedData.candidates[0].geometry.location.lng
+            }, error => console.log(error)))
+        console.log(this.state.location)
     }
 
-    searchRestaurant = () => {
-        console.log(this.state.locationURL + this.state.output + this.state.input + this.state.searchText + this.state.inputType + this.state.keyword + this.state.apiKey)
-        fetch(this.state.locationURL + this.state.output + this.state.input + this.state.searchText + this.state.inputType + this.state.keyword + this.state.apiKey)
-            .then(data => { return data.json() }, err => console.log(err))
-            .then(parsedData => this.setState({ location: parsedData }), err => console.log(err))
-        console.log(this.state.location)
+    setUserLocation = (location) => {
+        this.setState({userLocation: location}, this.getMapsLocation) // referenced https://reactjs.org/docs/react-component.html#setstate
     }
 
     render() {
         return (
             <div className="rightpanel flexitem">
                 <h1> Right Panel </h1>
+                <button onClick = {() => this.getMapsLocation()}>FETCH</button>
                 <table>
                     <tbody>
                         <tr>
@@ -65,8 +66,10 @@ class RightPanel extends Component {
                     this.props.updateReview ? < UpdateReview displayedReview = {this.props.displayedReview} handleUpdateReview = {this.props.handleUpdateReview} /> : <> </>
                 }
                 {
-                    this.props.newReview ? < NewReview handleAddReview = {this.props.handleAddReview} /> : <></>
+                    this.props.newReview ? < NewReview handleAddReview = {this.props.handleAddReview} setUserLocation = {this.setUserLocation} /> : <></>
                 }
+
+                
             </div>
         )
     }

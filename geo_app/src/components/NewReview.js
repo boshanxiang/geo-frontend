@@ -23,6 +23,7 @@ class NewReview extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        this.props.setUserLocation(this.state.name)
         fetch(`${baseURL}/reviews`, {
             method: "POST",
             body: JSON.stringify({name: this.state.name, description: this.state.description, rating: this.state.rating, location: this.state.location}),
