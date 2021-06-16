@@ -9,34 +9,7 @@ class MainWindow extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            reviews: [
-                {
-                    name: "Bo's Bakery",
-                    description: "Not a bad bakery, great sourdough.",
-                    rating: 3,
-                    location: "12345"
-                }, {
-                    name: "Ian's Eatery",
-                    description: "A perfect lunch spot.",
-                    rating: 5,
-                    location: "25853"
-                }, {
-                    name: "Hannah's Hamburger Stand",
-                    description: "Good food and ambience.",
-                    rating: 4,
-                    location: "09852"
-                }, {
-                    name: "Daniele's Diner",
-                    description: "Great diner food.",
-                    rating: 5,
-                    location: "98301"
-                }, {
-                    name: "Ben's Bar",
-                    description: "Perfect late-night dive spot with live music.",
-                    rating: 4,
-                    location: "18395"
-                }
-            ],
+            reviews: [],
             newReview: false,
             updateReview: false,
             showReview: true,
@@ -141,7 +114,7 @@ class MainWindow extends Component {
         return (
             <div className="mainwindow">
                 < LeftScroll reviews={this.state.reviews} getDisplayedReview={this.getDisplayedReview} toggleNewReview={this.toggleNewReview} />
-                {/* < CenterMaps /> */}
+                < CenterMaps />
                 < RightPanel showReview={this.state.showReview} newReview={this.state.newReview} updateReview={this.state.updateReview} displayedReview={this.state.displayedReview} handleAddReview={this.handleAddReview} toggleUpdateReview={this.toggleUpdateReview} deleteReview={this.deleteReview} handleUpdateReview={this.handleUpdateReview} />
             </div>
         )

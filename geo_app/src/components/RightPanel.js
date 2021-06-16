@@ -35,8 +35,17 @@ class RightPanel extends Component {
     render() {
         return (
             <div className="rightpanel flexitem">
-                <h1> Right Panel </h1>
+                <h1> Review </h1>
                 <button onClick = {() => this.getMapsLocation()}>FETCH</button>
+                {
+                    this.props.showReview ? < ShowReview displayedReview = {this.props.displayedReview} /> : <></>
+                }
+                {
+                    this.props.updateReview ? < UpdateReview displayedReview = {this.props.displayedReview} handleUpdateReview = {this.props.handleUpdateReview} /> : <> </>
+                }
+                {
+                    this.props.newReview ? < NewReview handleAddReview = {this.props.handleAddReview} /> : <></>
+                }
                 <table>
                     <tbody>
                         <tr>
@@ -58,18 +67,6 @@ class RightPanel extends Component {
                         </tr>
                     </tbody>
                 </table>
-
-                {
-                    this.props.showReview ? < ShowReview displayedReview = {this.props.displayedReview} /> : <></>
-                }
-                {
-                    this.props.updateReview ? < UpdateReview displayedReview = {this.props.displayedReview} handleUpdateReview = {this.props.handleUpdateReview} /> : <> </>
-                }
-                {
-                    this.props.newReview ? < NewReview handleAddReview = {this.props.handleAddReview} setUserLocation = {this.setUserLocation} /> : <></>
-                }
-
-                
             </div>
         )
     }
