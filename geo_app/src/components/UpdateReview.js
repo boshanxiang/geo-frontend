@@ -69,8 +69,6 @@ class UpdateReview extends Component {
                     <input type="text" id="description" name="description" onChange={this.handleChange} value={this.state.description} placeholder="Description" />
                     <label htmlFor="rating"></label>
                     <input type="number" id="rating" name="rating" onChange={this.handleChange} value={this.state.rating} placeholder="Rating" />
-                    <label htmlFor="location"></label>
-                    <input type="text" id="location" name="location" onChange={this.handleChange} value={this.state.location} placeholder="Location" />
                     <input type="submit" value="Update Review" />
                 </form>
             </div>
