@@ -1,6 +1,14 @@
-import React, {Component} from "react"
+import React, { Component } from "react"
 
-const baseURL = 'http://localhost:3003'
+let baseURL;
+
+if (process.env.NODE_ENV === 'development') {
+    baseURL = 'http://localhost:3003';
+} else {
+    // "https://morning-river-69185.herokuapp.com/" in this case is the *API* url
+    baseURL = 'https://morning-river-69185.herokuapp.com';
+}
+
 
 export const MapDetailsContext = React.createContext({}) // for consumer AND provider. by ".createContext()"ing, I am stating that this information will be context available to provider and consumer
 
@@ -8,7 +16,7 @@ export class MapDetails extends Component { // for provider. gives provider the 
     constructor(props) {
         super(props)
         this.state = {
-            locationName: "", 
+            locationName: "",
             lat: "",
             lng: "",
             location: {}
@@ -18,7 +26,7 @@ export class MapDetails extends Component { // for provider. gives provider the 
     getMapsLocation = () => new Promise((resolve, reject) => {
         console.log(baseURL + "/maps/" + this.state.locationName)
         fetch(baseURL + "/maps/" + this.state.locationName)
-            .then(data => {return data.json()}, error => console.log(error))
+            .then(data => { return data.json() }, error => console.log(error))
             .then(parsedData => this.setState({
                 location: parsedData,
                 lat: parsedData.candidates[0].geometry.location.lat,
@@ -27,7 +35,7 @@ export class MapDetails extends Component { // for provider. gives provider the 
     })
 
     setUserLocation = (location) => new Promise((resolve, reject) => {
-        this.setState({locationName: location}, (async () => {
+        this.setState({ locationName: location }, (async () => {
             await this.getMapsLocation()
             resolve()
         })) // referenced https://reactjs.org/docs/react-component.html#setstate for second param of setState 
@@ -35,7 +43,7 @@ export class MapDetails extends Component { // for provider. gives provider the 
 
     render() {
         return (
-            <MapDetailsContext.Provider value = {{...this.state,getMapsLocation: this.getMapsLocation, setUserLocation: this.setUserLocation}} >
+            <MapDetailsContext.Provider value={{ ...this.state, getMapsLocation: this.getMapsLocation, setUserLocation: this.setUserLocation }} >
                 {this.props.children}
             </MapDetailsContext.Provider>
         )
