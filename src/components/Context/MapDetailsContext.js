@@ -27,18 +27,15 @@ export class MapDetails extends Component { // for provider. gives provider the 
         console.log(baseURL + "/maps/" + this.state.locationName)
         fetch(baseURL + "/maps/" + this.state.locationName)
             .then(data => { return data.json() }, error => console.log(error))
-            .then(parsedData => {
-                this.setState({
+            .then(parsedData => this.setState({
                 location: parsedData,
                 lat: parsedData.candidates[0].geometry.location.lat,
                 lng: parsedData.candidates[0].geometry.location.lng
-            }, resolve, error => console.log(error))}) // wait for fetch, wait for setState, then resolve
+            }, resolve, error => console.log(error))) // wait for fetch, wait for setState, then resolve
     })
 
     setUserLocation = (location) => new Promise((resolve, reject) => {
-        let urlLocation = location.replace(" ", "%20")
-        console.log(urlLocation)
-        this.setState({ locationName: urlLocation }, (async () => {
+        this.setState({ locationName: location }, (async () => {
             await this.getMapsLocation()
             resolve()
         })) // referenced https://reactjs.org/docs/react-component.html#setstate for second param of setState 
