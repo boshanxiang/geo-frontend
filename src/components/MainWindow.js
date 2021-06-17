@@ -3,7 +3,15 @@ import LeftScroll from './LeftScroll'
 import CenterMaps from './CenterMaps'
 import RightPanel from './RightPanel'
 
-const baseURL = 'http://localhost:3003'
+let baseURL;
+
+if (process.env.NODE_ENV === 'development') {
+    baseURL = 'http://localhost:3003';
+} else {
+    // "https://morning-river-69185.herokuapp.com/" in this case is the *API* url
+    baseURL = 'https://morning-river-69185.herokuapp.com';
+}
+
 
 class MainWindow extends Component {
     constructor(props) {
@@ -114,7 +122,7 @@ class MainWindow extends Component {
         return (
             <div className="mainwindow">
                 < LeftScroll reviews={this.state.reviews} getDisplayedReview={this.getDisplayedReview} toggleNewReview={this.toggleNewReview} />
-                < CenterMaps currentCenter = {{lat: this.state.displayedReview.lat, lng: this.state.displayedReview.lng}}/>
+                < CenterMaps currentCenter={{ lat: this.state.displayedReview.lat, lng: this.state.displayedReview.lng }} />
                 < RightPanel showReview={this.state.showReview} newReview={this.state.newReview} updateReview={this.state.updateReview} displayedReview={this.state.displayedReview} handleAddReview={this.handleAddReview} toggleUpdateReview={this.toggleUpdateReview} deleteReview={this.deleteReview} handleUpdateReview={this.handleUpdateReview} />
             </div>
         )
