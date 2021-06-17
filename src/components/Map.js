@@ -70,11 +70,7 @@ export class CurrentLocation extends React.Component {
           const mapRef = this.refs.map;
     
           // reference to the actual DOM element
-          const node = ReactDOM.findDOMNode(mapRef);
-        //   MAY NEED TO REPLACE / FIX GIVEN NOT USING REACT-DOM
-        //   MAY NEED TO REPLACE / FIX GIVEN NOT USING REACT-DOM
-        //   MAY NEED TO REPLACE / FIX GIVEN NOT USING REACT-DOM
-        
+          const node = ReactDOM.findDOMNode(mapRef);        
     
           let { zoom } = this.props;
           const { lat, lng } = this.state.currentLocation;
