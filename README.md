@@ -39,16 +39,16 @@ The above link will take you to our app on Heroku. The front-end is a react base
 - Display image of restaurant in review show.
 - Scroll functionality on right panel.
 
-<h4>Planning Stage<h4>
-<h6>Our oiginal vision for our app is displayed below. The main CSS challenges included having a scroll bar for restaurants that scrolled independent of the other content on the page and effectively formatting the mat in the center of the page.
+<h4>Planning Stages</h4>
+<h6>Our oiginal vision for our app is displayed below. The main CSS challenges included having a scroll bar for restaurants that scrolled independent of the other content on the page and effectively formatting the mat in the center of the page.</h6>
 <br>
 ![Wireframe](./ReadmeImages/Wireframe.png)
 <br>
-<h6>To visually grasp how information would flow between different components, we created the below diagram to represent state, props, and in which component each would live. 
+<h6>To visually grasp how information would flow between different components, we created the below diagram to represent state, props, and in which component each would live.</h6>
 <br>
 ![logic of state and props](./ReadmeImages/StateProps.png)
 <br>
-<h6>In order to make latitude and longitude values easily updatable and accessible to multiple components, we implemented context APIs. Context APIs store data in a separate location, wrap around a "provider", and then make that context available to all of the "consumers" within the context wrapper. The below graphic represents the flow of information between the context, the provider, and the consumers.
+<h6>In order to make latitude and longitude values easily updatable and accessible to multiple components, we implemented context APIs. Context APIs store data in a separate location, wrap around a "provider", and then make that context available to all of the "consumers" within the context wrapper. The below graphic represents the flow of information between the context, the provider, and the consumers.</h6>
 <br>
 ![context logic](./ReadmeImages/Context.png)
 
