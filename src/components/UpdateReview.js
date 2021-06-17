@@ -1,8 +1,16 @@
 import { Component } from 'react'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {MapDetailsContext} from "./Context/MapDetailsContext"
+import { MapDetailsContext } from "./Context/MapDetailsContext"
 
-const baseURL = 'http://localhost:3003'
+let baseURL;
+
+if (process.env.NODE_ENV === 'development') {
+    baseURL = 'http://localhost:3003';
+} else {
+    // "https://morning-river-69185.herokuapp.com/" in this case is the *API* url
+    baseURL = 'https://morning-river-69185.herokuapp.com';
+}
+
 
 class UpdateReview extends Component {
     static contextType = MapDetailsContext // use this.context to access context
@@ -42,7 +50,7 @@ class UpdateReview extends Component {
         this.setState({
             lat: this.context.lat,
             lng: this.context.lng
-        }, () => console.log(this.state)) 
+        }, () => console.log(this.state))
     }
 
     handleSubmit = async (e) => {

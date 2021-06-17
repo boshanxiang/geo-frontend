@@ -1,7 +1,15 @@
 import { Component } from 'react'
-import {MapDetailsContext} from "./Context/MapDetailsContext"
+import { MapDetailsContext } from "./Context/MapDetailsContext"
 
-const baseURL = 'http://localhost:3003'
+let baseURL;
+
+if (process.env.NODE_ENV === 'development') {
+    baseURL = 'http://localhost:3003';
+} else {
+    // "https://morning-river-69185.herokuapp.com/" in this case is the *API* url
+    baseURL = 'https://morning-river-69185.herokuapp.com';
+}
+
 
 class NewReview extends Component {
     static contextType = MapDetailsContext // use this.context to access context
@@ -29,7 +37,7 @@ class NewReview extends Component {
         this.setState({
             lat: this.context.lat,
             lng: this.context.lng
-        }, () => console.log(this.state)) 
+        }, () => console.log(this.state))
     }
 
     handleSubmit = async (e) => {
@@ -60,13 +68,13 @@ class NewReview extends Component {
 
     render() {
         return (
-                <form onSubmit={this.handleSubmit} >
-                    <input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.title} placeholder="Restaurant Name" />
-                    <input type="number" id="rating" name="rating" onChange={this.handleChange} value={this.state.rating} placeholder="Rating" min="0" max="5" />
-                    <textarea type="textarea" rows="10" id="description" name="description" onChange={this.handleChange} value={this.state.description} placeholder="Description"> </textarea>
-                    <input type="text" id="location" name="location" onChange={this.handleChange} value={this.state.location} placeholder="Location" />
-                    <input type="submit" value="Save Review" />
-                </form>
+            <form onSubmit={this.handleSubmit} >
+                <input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.title} placeholder="Restaurant Name" />
+                <input type="number" id="rating" name="rating" onChange={this.handleChange} value={this.state.rating} placeholder="Rating" min="0" max="5" />
+                <textarea type="textarea" rows="10" id="description" name="description" onChange={this.handleChange} value={this.state.description} placeholder="Description"> </textarea>
+                <input type="text" id="location" name="location" onChange={this.handleChange} value={this.state.location} placeholder="Location" />
+                <input type="submit" value="Save Review" />
+            </form>
         )
     }
 }
