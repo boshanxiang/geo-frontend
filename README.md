@@ -42,14 +42,14 @@ The above link will take you to our app on Heroku. The front-end is a react base
 <h4>Planning Stages</h4>
 <h6>Our oiginal vision for our app is displayed below. The main CSS challenges included having a scroll bar for restaurants that scrolled independent of the other content on the page and effectively formatting the mat in the center of the page.</h6>
 <br>
-![Wireframe](./ReadmeImages/Wireframe.png)
+![Wireframe](https://raw.githubusercontent.com/boshanxiang/geo-frontend/main/ReadmeImages/Wireframe.png?token=ATTNDEOUEWSPBWCGBYM57ODAZOLPA)
 <br>
 <h6>To visually grasp how information would flow between different components, we created the below diagram to represent state, props, and in which component each would live.</h6>
 <br>
-![logic of state and props](./ReadmeImages/StateProps.png)
+![logic of state and props](https://raw.githubusercontent.com/boshanxiang/geo-frontend/main/ReadmeImages/StateProps.png?token=ATTNDENMRKCX2OFRPDXV52DAZOLNQ)
 <br>
 <h6>In order to make latitude and longitude values easily updatable and accessible to multiple components, we implemented context APIs. Context APIs store data in a separate location, wrap around a "provider", and then make that context available to all of the "consumers" within the context wrapper. The below graphic represents the flow of information between the context, the provider, and the consumers.</h6>
 <br>
-![context logic](./ReadmeImages/Context.png)
+![context logic](https://raw.githubusercontent.com/boshanxiang/geo-frontend/main/ReadmeImages/Context.png?token=ATTNDEJSNYBJ7GE7VSVRUIDAZOLK2)
 
 NOTE: favicon from https://www.favicon-generator.org/search/---/Fork
