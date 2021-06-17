@@ -13,7 +13,7 @@ export class CurrentLocation extends React.Component {
     constructor(props) {
         super(props);
     
-        const { lat, lng } = this.props.initialCenter;
+        const { lat, lng } = this.props.center;
     
         this.state = {
           currentLocation: {
