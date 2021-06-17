@@ -63,7 +63,7 @@ class NewReview extends Component {
                     phone: "",
                     email: ""
                 })
-            }).catch(error => console.lof({ "Error": error }))
+            }).catch(error => console.log({ "Error": error }))
     }
 
     render() {
